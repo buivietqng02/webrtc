@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='./jitsi_external_api.js' ></script>
+</head>
+<body>
+    <div id="meet"></div>
+    <script >
+      const domain = 'meet.jit.si';
+const options = {
+    roomName: 'JitsiMeetAPIExample',
+    width:  800,
+    height: 800,
+    parentNode: document.querySelector('#meet'),
+    lang: 'en',
+    disableRemoteMute: false,
+    /* configOverwrite : {
+        disableDeepLinking: true,
+        startAudioOnly: true,
+        toolbarButtons: [
+                        isAudioOnly ? '' : 'camera',
+                        isAudioOnly ? '' : 'desktop',
+                        'hangup',
+                        'microphone',
+                        isAudioOnly ? '' : 'select-background',
+                        isAudioOnly ? '' : 'shareaudio',
+                        isAudioOnly ? '' : 'sharedvideo',
+                        isAudioOnly ? '' : 'toggle-camera'
+                    ],
+        prejoinPageEnabled: false,
+        remoteVideoMenu: {
+                        disableKick: true,
+                        disableGrantModerator: true
+                    },
+                    disableRemoteMute: true,
+                    disableInviteFunctions: true
+                },
+                interfaceConfigOverwrite: {
+                    LANG_DETECTION: false,
+                    DISABLE_JOIN_LEAVE_NOTIFICATIONS: true,
+                    DEFAULT_LOGO_URL: ''
+                } */
+    }
+
+const api = new JitsiMeetExternalAPI(domain, options);
+navigator.permissions.query({name: 'camera'
+}).then((permissionObj)=> {
+    console.log(permissionObj)
+})
+    </script>
+</body>
+</html>
